@@ -1,0 +1,12 @@
+background_b: 255
+background_g: 86
+background_r: 150
+rosdistro: 'kinetic
+
+  '
+roslaunch:
+  uris: {host_parallels_vm__40431: 'http://parallels-vm:40431/'}
+rosversion: '1.12.13
+
+  '
+run_id: 245f99fc-aa97-11e8-af59-001c429ce3e4
