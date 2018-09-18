@@ -1,0 +1,742 @@
+   26  sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+   27  sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+   28  sudo apt-get update
+   29  sudo apt-get install ros-kinetic-desktop-full
+   30  sudo rosdep init
+   31  rosdep update
+   32  echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+   33  source ~/.bashrc
+   34  sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential
+   35  export | grep ROS
+   36  ls
+   37  clear
+   38  ls
+   39  clear
+   40  ls
+   41  clear
+   42  ls
+   43  export | grep ROS
+   44  mkdir -p ~/catkin_ws/src
+   45  cd ~/catkin_ws/src
+   46  ls
+   47  cd ..
+   48  ls
+   49  cd ~/catkin_ws/
+   50  catkin_make
+   51  ls
+   52  cd src/
+   53  ls
+   54  cat CMakeLists.txt 
+   55  ls
+   56  clear
+   57  cd ..
+   58  ls
+   59  cd devel/
+   60  ls
+   61  cd ..
+   62  source devel/setup.bash
+   63  echo $ROS_PACKAGE_PATH
+   64  sudo apt-get install ros-kinetic-ros-tutorials
+   65  sudo apt autoremove 
+   66  ls
+   67  rospack find roscpp
+   68  roscd roscpp
+   69  pwd
+   70  cd ~/catkin_ws/
+   71  ls
+   72  echo $ROS_PACKAGE_PATH
+   73  roscd log
+   74  ls
+   75  cd src/
+   76  ls
+   77  catkin_create_pkg beginner_tutorials std_msgs rospy roscpp
+   78  ls
+   79  cd ..
+   80  ls
+   81  la
+   82  cd src/
+   83  ls
+   84  la
+   85  cd beginner_tutorials/
+   86  ls
+   87  la
+   88  ll
+   89  rospack depends1 beginner_tutorials
+   90  roscd beginner_tutorials/
+   91  ll
+   92  cat package.xml 
+   93  rospack depends1 rospy
+   94  rospack depends
+   95  rospack depends beginner_tutorials 
+   96  rosnode list
+   97  rosnode info /rosout 
+   98  rosrun turtlesim turtlesim_node
+   99  rosrun turtlesim turtlesim_node __name:=my_turtle
+  100  ls
+  101  rosnode list
+  102  rosnode info /turtlesim 
+  103  rosnode list
+  104  rosnode cleanup
+  105  rosnode list
+  106  rosnode ping my_turtle
+  107  ls
+  108  roscd be
+  109  ls
+  110  cd catkin_ws/src/beginner_tutorials/
+  111  ls
+  112  cat package.xml 
+  113  ls
+  114  vi package.xml 
+  115  ls
+  116  cd
+  117  ls
+  118  la
+  119  ll
+  120  cd .vim/
+  121  ls
+  122  ll
+  123  ls
+  124  cd
+  125  ls
+  126  cd .vim/
+  127  ls
+  128  cp /media/psf/Home/.vim/vimrc .
+  129  cp /media/psf/Home/.vim/plugin/taglist.vim .
+  130  cp /media/psf/Home/.vim/doc/taglist.txt .
+  131  mkdir plugin
+  132  mkdir doc
+  133  mv taglist.vim plugin/
+  134  mv taglist.txt doc/
+  135  ls
+  136  sudo apt-get install ctags
+  137  ls
+  138  cd
+  139  cd catkin_ws/src/beginner_tutorials/
+  140  ls
+  141  vi package.xml 
+  142  ls
+  143  cd
+  144  la
+  145  ls
+  146  ll
+  147  source .profile 
+  148  source .bashrc 
+  149  ls
+  150  cd .
+  151  cd -
+  152  ls
+  153  cd catkin_ws/src/beginner_tutorials/
+  154  ls
+  155  vi package.xml 
+  156  ls
+  157  source /opt/ros/kinetic/setup.bash 
+  158  cat /opt/ros/kinetic/setup.bash 
+  159  ls
+  160  cd ../..
+  161  ls
+  162  ls src/
+  163  catkin_make
+  164  ll
+  165  history
+  166  roscore
+  167  rostopic -h
+  168  rostopic echo /turtle1/cmd_vel 
+  169  rostopic echo /turtle1/cmd_vel  &
+  170  rostopic echo /turtle1/cmd_vel
+  171  history
+  172  sudo apt-get install ros-kinetic-rqt
+  173  sudo apt-get install ros-kinetic-rqt-common-plugins
+  174  rosrun rqt_graph rqt_graph
+  175  rosrun rqt_graph rqt_graph &
+  176  ls
+  177  rosrun rqt_graph rqt_graph &
+  178  rostopic list
+  179  rostopic list -v
+  180  rostopic list -h
+  181  rostopic type /turtle1/cmd_vel 
+  182  rosmsg show geometry_msgs/Twist
+  183  rostopic -h
+  184  rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
+  185  rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
+  186  rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]' &
+  187  ls
+  188  rostopic hz
+  189  rostopic hz /turtle1/pose 
+  190  rostopic type /turtle1/cmd_vel | rosmsg show
+  191  rosrun rqt_plot rqt_plot
+  192  rosservice list
+  193  rostopic list
+  194  rosservice type clear
+  195  rosservice call clear
+  196  rosservice type spawn| rossrv show
+  197  rosservice type spawn
+  198  rosservice type spawn| rossrv show
+  199  rosservice call spawn 2 2 0.2 ""
+  200  rosparam list
+  201  rosparam set background_r 150
+  202  rosservice call clear
+  203  rosparam get background_g
+  204  rosparam get background_b
+  205  rosparam get background_r
+  206  rosparam get /
+  207  rosparam dump parmes.yaml
+  208  rosnode list
+  209  rosnode info /turtlesim 
+  210  rosrun turtlesim turtle_teleop_key
+  211  rosnode list
+  212  rosnode info /rosout 
+  213  rosrun turtlesim turtlesim_node 
+  214  rosnode list
+  215  rosrun turtlesim turtlesim_node 
+  216  cd catkin_ws/
+  217  ls
+  218  roscore
+  219  roscore &
+  220  ls
+  221  rosrun rqt_console 
+  222  history | grep rosrun
+  223  rosrun rqt_console rqt_console 
+  224  rosrun rqt_console rqt_console &
+  225  rosrun rqt_logger_level rqt_logger_level 
+  226  rosrun rqt_logger_level rqt_logger_level &
+  227  rosrun turtlesim turtlesim_node &
+  228  rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 0.0]' &
+  229  history
+  230  rosrun rqt_console rqt_console &
+  231  rostopic pub /turtlesim1/turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, -1.8]' &
+  232  rqt &
+  233  rqt_graph 
+  234  roscore
+  235  history
+  236  roscore &
+  237  history 
+  238  rosrun rqt_console rqt_console 
+  239  rosrun rqt_console rqt_console &
+  240  rosrun rqt_logger_level rqt_logger_level 
+  241  rosrun rqt_logger_level rqt_logger_level ^
+  242  rosrun rqt_logger_level rqt_logger_level &
+  243  rosrun turtlesim turtlesim_node &
+  244  rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
+  245  ls
+  246  clear
+  247  ls
+  248  roscd be
+  249  ls
+  250  roscd beginner_tutorals
+  251  ls
+  252  cd catkin_ws/
+  253  ls
+  254  cd src/
+  255  ls
+  256  cd beginner_tutorials/
+  257  ls
+  258  clear
+  259  cd
+  260  export ROS_PACKAGE_PATH=~/kinetic_workspace/sandbox:$ROS_PACKAGE_PATH
+  261  roscd beginner_tutorials
+  262  export | grep ROS
+  263  cd catkin_ws/src/beginner_tutorials/
+  264  ls
+  265  mkdir launch
+  266  cd launch/
+  267  ls
+  268  vi turtlemimic.launch
+  269  roslaunch beginner_tutorials turtlemimic.launch
+  270  ls
+  271  cat turtlemimic.launch 
+  272  roscd beginner_tutorials
+  273  roscd src
+  274  roscd rospy
+  275  cd -
+  276  ls
+  277  cd ..
+  278  ls
+  279  catkin_make
+  280  ls
+  281  rm -r launch/
+  282  ls
+  283  cd ..
+  284  ls
+  285  rm -rf beginner_tutorials/
+  286  ls
+  287  cd ..
+  288  ls
+  289  catkin_make
+  290  ls
+  291  echo $ROS_PACKAGE_PATH
+  292  source devel/setup.bash
+  293  echo $ROS_PACKAGE_PATH
+  294  ls
+  295  cd src/
+  296  ls
+  297  catkin_create_pkg beginner_tutorials std_msgs rospy roscpp
+  298  ls
+  299  cd beginner_tutorials/
+  300  ls
+  301  catkin_make
+  302  source /opt/ros/kinetic/setup.bash 
+  303  catkin_make
+  304  ls
+  305  catkin_make
+  306  ls
+  307  cd
+  308  echo $ROS_PACKAGE_PATH
+  309  history 
+  310  source devel/setup.bash
+  311  ls
+  312  cd catkin_ws/
+  313  echo $ROS_PACKAGE_PATH
+  314  source devel/setup.bash
+  315  echo $ROS_PACKAGE_PATH
+  316  history 
+  317  ls
+  318  cd src/
+  319  s
+  320  ls
+  321  cd ..
+  322  roscd beginner_tutorials
+  323  ls
+  324  mkdir launch
+  325  cd launch/
+  326  ls
+  327  vi turtlemimic.launch
+  328  roslaunch beginner_tutorials turtlemimic.launch
+  329  cd
+  330  history | grep source
+  331  source devel/setup.bash 
+  332  rosrun beginner_tutorials listener 
+  333  rosed roscpp Logger.msg 
+  334  echo $EDITOR
+  335  rosed roscpp Logger.msg 
+  336  roscd beginner_tutorials
+  337  source /opt/ros/kinetic/setup.
+  338  source /opt/ros/kinetic/setup.bash 
+  339  roscd beginner_tutorials
+  340  source catkin_ws/devel/setup.bash 
+  341  roscd beginner_tutorials
+  342  ls
+  343  mkdir msg
+  344  ls
+  345  cd msg/
+  346  ls
+  347  echo "int64 num" > msg/Num.msg
+  348  ls
+  349  cd ..
+  350  echo "int64 num" > msg/Num.msg
+  351  ls
+  352  cd msg/
+  353  cd ..
+  354  cat msg/Num.msg 
+  355  ls
+  356  vi msg/Num.msg 
+  357  ls
+  358  cat package.xml 
+  359  vi package.xml 
+  360  ls
+  361  rosed beginner_tutorials CMakeLists.txt 
+  362  ls
+  363  cd ..
+  364  ls
+  365  cat CMakeLists.txt 
+  366  vi CMakeLists.txt 
+  367  ls
+  368  cd beginner_tutorials/
+  369  ls
+  370  rosed beginner_tutorials CMakeLists.txt 
+  371  rosmsg show beginner_tutorials/Num
+  372  rosed beginner_tutorials CMakeLists.txt 
+  373  rosmsg show beginner_tutorials/Num
+  374  rosmsg show Num
+  375  clear
+  376  rosmsg show beginner_tutorials/Num
+  377  ls
+  378  mkdir srv
+  379  ls
+  380  roscp rospy_tutorials AddTwoInts.srv srv/AddTwoInts.srv
+  381  ls
+  382  ll srv
+  383  rosed beginner_tutorials CMakeLists.txt 
+  384  rossrv show beginner_tutorials/AddTwoInts
+  385  ls
+  386  rosed beginner_tutorials CMakeLists.txt 
+  387  rosmsg show Num
+  388  ls
+  389  vi package.xml 
+  390  rosmsg show Num
+  391  vi package.xml 
+  392  ls
+  393  rosed beginner_tutorials CMakeLists.txt 
+  394  ls
+  395  rosmsg show Num
+  396  rossrv show AddTwoInts
+  397  rosed beginner_tutorials CMakeLists.txt 
+  398  cd ../..
+  399  catkin_make
+  400  ls
+  401  cd -
+  402  ls
+  403  rosmsg -h
+  404  rosmsg show -h
+  405  ls
+  406  cd src/
+  407  ls
+  408  cd ../..
+  409  ls
+  410  cd ..
+  411  ls
+  412  cd devel/
+  413  ls
+  414  cd include/
+  415  ls
+  416  cd beginner_tutorials/
+  417  ls
+  418  cat AddTwoInts
+  419  cat AddTwoInts.h 
+  420  ls
+  421  cd ../../..
+  422  cd src/beginner_tutorials/
+  423  ls
+  424  cd sr
+  425  cd src/
+  426  ls
+  427  ll
+  428  vi talker.cpp
+  429  vi listener.cpp
+  430  ls
+  431  cd ..
+  432  ls
+  433  vi CMakeLists.txt 
+  434  cd ../..
+  435  catkin_make
+  436  ls
+  437  roscore &
+  438  rosrun beginner_tutorials talker &
+  439  ls
+  440  cd ../src
+  441  ls
+  442  vi talker.cpp 
+  443  ls
+  444  vi listener.cpp 
+  445  cd ../../..
+  446  ls
+  447  catkin_make
+  448  ls
+  449  source devel/setup.bash 
+  450  rosrun beginner_tutorials listener.py 
+  451  ls
+  452  cd catkin_ws/
+  453  ls
+  454  cd ..
+  455  ls
+  456  mkdir Ros
+  457  ls
+  458  cd Ros/
+  459  ls
+  460  cd 
+  461  cd ros
+  462  cd Ros
+  463  ls
+  464  vi source.py
+  465  source /opt/ros/kinetic/setup.bash 
+  466  cd ..
+  467  source catkin_ws/devel/setup.bash 
+  468  ls
+  469  rm Ros/source.py 
+  470  ls
+  471  ls Ros
+  472  l
+  473  ls
+  474  clear
+  475  ls
+  476  cd catkin_ws/src/beginner_tutorials/
+  477  ls
+  478  cd src/
+  479  ls
+  480  cd ..
+  481  ls
+  482  mkdir scripts
+  483  ls
+  484  cd scripts/
+  485  ls
+  486  wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/talker.py
+  487  ls
+  488  chmod +x talker.py 
+  489  ls
+  490  cat talker.py 
+  491  vi talker.py 
+  492  ls
+  493  wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/listener.py
+  494  ls
+  495  chmod +x listener.py 
+  496  ls
+  497  vi listener.py 
+  498  rosrun beginner_tutorials talker.py 
+  499  roscore &
+  500  rosrun beginner_tutorials talker.py 
+  501  clear
+  502  ls
+  503  cat talker.py 
+  504  cat listener.py 
+  505  ls
+  506  cd
+  507  pwd
+  508  cd ..
+  509  ls
+  510  cd ..
+  511  ls
+  512  ll
+  513  cd
+  514  ls
+  515  history | gerp media
+  516  history | grep media
+  517  cd /media/
+  518  ls
+  519  cd psf/
+  520  ls
+  521  cd Home/
+  522  ls
+  523  cd
+  524  ls
+  525  ll
+  526  sudo apt-get install git
+  527  ssh-keygen -trsa -C "1406493945@qq.com"
+  528  cd .ssh/
+  529  ls
+  530  cat id_rsa.pub 
+  531  git config --global user.name="Woong"
+  532  git config --global user.name "Woong"
+  533  git config --global user.email "1406493495@qq.com"
+  534  cd
+  535  ls
+  536  cd catkin_ws/
+  537  ls
+  538  cd ..
+  539  ls
+  540  cd Ros
+  541  ls
+  542  gcl https://github.com/j1406493495/ros_demo.git
+  543  git clone https://github.com/j1406493495/ros_demo.git
+  544  ls
+  545  cd ros_demo/
+  546  ls
+  547  la
+  548  mv .git/ ../../catkin_ws/
+  549  mv README.md  ../../catkin_ws/
+  550  ls
+  551  gst
+  552  ls
+  553  cd ..
+  554  ls
+  555  rm ros_demo/
+  556  rm -rf ros_demo/
+  557  ls
+  558  cd ..
+  559  ls
+  560  cd catkin_ws/
+  561  ls
+  562  gst
+  563  git status
+  564  cd build/
+  565  ls
+  566  cd ..
+  567  ls
+  568  gst
+  569  git status
+  570  git add .
+  571  git status
+  572  git reset HEAD .
+  573  gst
+  574  git status
+  575  ll
+  576  vi .gitignore
+  577  gst
+  578  git status
+  579  ls
+  580  git status
+  581  ga.
+  582  git add .
+  583  git status
+  584  git push origin master 
+  585  git status
+  586  git commit -m "first commit"
+  587  git status
+  588  git push 
+  589  git config --global credential.helper stor
+  590  git config --global credential.helper store
+  591  ls
+  592  roscd beginner_tutorials/
+  593  ls
+  594  cd srv
+  595  ls
+  596  cd ..
+  597  ls
+  598  cd src
+  599  ls
+  600  vi add_two_ints_server.cpp
+  601  vi add_two_ints_client.cpp
+  602  ls
+  603  cd ..
+  604  ls
+  605  vi CMakeLists.txt 
+  606  cd ../..
+  607  ls
+  608  catkin_make
+  609  ls
+  610  gst
+  611  git status
+  612  git add .
+  613  git commit -m "service client c++"
+  614  git push
+  615  roscd beginner_tutorials/
+  616  ls
+  617  cd scripts/
+  618  ls
+  619  vi add_two_ints_server.py
+  620  ls
+  621  vi add_two_ints_client.py 
+  622  ls
+  623  chmod +x add_two_ints_*
+  624  ls
+  625  cd ../../..
+  626  ls
+  627  catkin_make
+  628  git status
+  629  ls
+  630  . devel/setup.bash 
+  631  rosrun beginner_tutorials add_two_ints_client.py 
+  632  rosrun beginner_tutorials add_two_ints_server.py 
+  633  rosed beginner_tutorials add_two_ints_server.py 
+  634  catkin_make
+  635  ls
+  636  . devel/setup.bash 
+  637  rosrun beginner_tutorials add_two_ints_server.py 
+  638  rosrun beginner_tutorials add_two_ints_server
+  639  gst
+  640  git status
+  641  git add .
+  642  git commit -m "service client python"
+  643  git push
+  644  git status
+  645  roscore &
+  646  ls
+  647  rosrun turtlesim turtlesim_node &
+  648  rosservice call clear
+  649  rostopic list -v
+  650  cd
+  651  ls
+  652  cd Ros/
+  653  ls
+  654  mkdir tmp
+  655  ls
+  656  cd tmp/
+  657  ls
+  658  mkdir bagfiles
+  659  cd bagfiles/
+  660  ls
+  661  rosbag record -a
+  662  ls
+  663  cd ../../.
+  664  cd 
+  665  cd catkin_ws/
+  666  ls
+  667  mkdir bagfiles
+  668  ls
+  669  cd bagfiles/
+  670  ls
+  671  rosservice call clear
+  672  rosbag record -a
+  673  ls
+  674  git status
+  675  cd ..
+  676  git status
+  677  cd bagfiles/
+  678  ls
+  679  rosbag info 2018-08-29-17-39-26.bag 
+  680  rosbag play 2018-08-29-17-39-26.bag 
+  681  rosbag play -r 2018-08-29-17-39-26.bag 
+  682  rosbag play -r 2 2018-08-29-17-39-26.bag 
+  683  rosrun turtlesim turtlesim_node &
+  684  rosbag record -O subset /turtle1/command_velocity /turtle1/pose
+  685  ls
+  686  rosbag info subset.bag 
+  687  rosbag play subset.bag 
+  688  gst
+  689  git status
+  690  cd ..
+  691  git status
+  692  git add .
+  693  git status
+  694  git commit -m "rosbag bagfiles"
+  695  git push
+  696  ls
+  697  source catkin_ws/devel/setup.bash 
+  698  roscd beginner_tutorials/
+  699  ls
+  700  cd sr
+  701  cd src
+  702  ls
+  703  cat listener.cpp 
+  704  cat talker.cpp 
+  705  :q:q!
+  706  ls
+  707  cd ../scripts/
+  708  ls
+  709  vi talker.py 
+  710  vi listener.py 
+  711  cd ..
+  712  ls
+  713  cd src/
+  714  ls
+  715  cat add_two_ints_client.cpp 
+  716  cd ../../..
+  717  rosrun beginner_tutorials add_two_ints_client.py 4 5
+  718  rosrun beginner_tutorials add_two_ints_client.py 3 6
+  719  rosrun beginner_tutorials add_two_ints_client 1 3
+  720  rosrun beginner_tutorials add_two_ints_client 1 4
+  721  rosrun turtlesim turtle_teleop_key &
+  722  rosrun turtlesim turtle_teleop_key
+  723  rosservice call clear
+  724  rosrun turtlesim turtle_teleop_key 
+  725  roscore
+  726  rosrun roscpp_tutorials listener
+  727  ls
+  728  ro
+  729  rostopic type chatter
+  730  roscd
+  731  roswtf
+  732  roscore &
+  733  roscd
+  734  roswtf
+  735  cd
+  736  rospack find sensor_msgs
+  737  rosmsg show sensor_msgs/
+  738  rosmsg show sensor_msgs
+  739  rosmsg list 
+  740  rosmsg list | grep sensor_msgs
+  741  roscore &
+  742  rostopic list 
+  743  rosnode list
+  744  rospack depends roscpp_tutorials
+  745  rosrun roscpp_tutorials talker
+  746  rosrun roscpp_tutorials talker &
+  747  rosrun rqt_graph rqt_graph 
+  748  ls
+  749  cd catkin_ws/
+  750  ls
+  751  history
+  752  history | grep setup
+  753  source cd
+  754  cd
+  755  ls
+  756  cd catkin_ws/
+  757  source /opt/ros/kinetic/setup.bash 
+  758  source devel/setup.bash 
+  759  roscd beginner_tutorials/
+  760  ls
+  761  cd
+  762  apt-cache search ros-kinetic
+  763  history
+  764  ls
+  765  cd Templates/
+  766  ls
+  767  history >> historyCmd.txt
