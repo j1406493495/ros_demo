@@ -2,14 +2,14 @@
 
 import sys
 import rospy
-from beginner_tutorials.srv import *
+from rospy_pkg.srv import *
 
 def add_two_ints_client(x, y):
     rospy.wait_for_service('add_two_ints')
     try:
-        add_two_ints = rospy.ServiceProxy('add_two_ints', AddTwoInts)
+        add_two_ints = rospy.ServiceProxy('add_two_ints', SrvTutorial)
         resp1 = add_two_ints(x, y)
-        return resp1.sum
+        return resp1.result
     except rospy.ServiceException, e:
         print "Service call failed: %s"%e
 
