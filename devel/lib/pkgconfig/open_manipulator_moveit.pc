@@ -1,8 +1,0 @@
-prefix=/home/parallels/catkin_ws/devel
-
-Name: open_manipulator_moveit
-Description: Description of open_manipulator_moveit
-Version: 1.0.0
-Cflags: -I/home/parallels/catkin_ws/src/open_manipulator/open_manipulator_moveit/include
-Libs: -L/home/parallels/catkin_ws/devel/lib 
-Requires: moveit_ros_move_group moveit_kinematics moveit_planners_ompl moveit_ros_visualization joint_state_publisher robot_state_publisher xacro urdf
